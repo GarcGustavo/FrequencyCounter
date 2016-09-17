@@ -3,6 +3,7 @@ package testerClasses;
 import approachClasses.SequentialFD;
 import approachClasses.FrequencyCounter;
 import java.util.ArrayList;
+import java.util.Map.Entry;
 import java.io.IOException;
 
 public class OrderedTester extends SequentialTester {
@@ -12,8 +13,8 @@ public class OrderedTester extends SequentialTester {
 
 	public static void main(String[] args) throws IOException{
 		readFiles("inputData/integerData.txt", "inputData/stringData.txt");
-		testerStr(strList);
 		testerInt(intList);
+		testerStr(strList);
 	}
 
 	//Methods to measure time in which SequentialFD executes for strings or integers
@@ -21,19 +22,31 @@ public class OrderedTester extends SequentialTester {
 	public static void testerInt(ArrayList<Integer> array){
 
 		FrequencyCounter<Integer> sequenCounter = new SequentialFD<>();
+		ArrayList<Entry<Integer, Integer>> resultArray = null;
+		
 		long startTime = System.currentTimeMillis();
-		sequenCounter.computeFDList(array);
+		resultArray = sequenCounter.computeFDList(array);
 		long estimatedTime = System.currentTimeMillis()-startTime;
-		System.out.println("Method took "+ estimatedTime + " seconds for "+ array.size() +" integers");
+		
+		for(int i=0; i<sequenCounter.computeFDList(array).size();i++){
+		System.out.println(resultArray.get(i));
+		}
+		System.out.println("Method took "+ estimatedTime + " seconds for "+ array.size() +" integers\n");
 
 	}
 	public static void testerStr(ArrayList<String> array){
 
 		FrequencyCounter<String> sequenCounter = new SequentialFD<>();
+		ArrayList<Entry<String, Integer>> resultArray = null;
+		
 		long startTime = System.currentTimeMillis();
-		sequenCounter.computeFDList(array);
+		resultArray = sequenCounter.computeFDList(array);
 		long estimatedTime = System.currentTimeMillis()-startTime;
-		System.out.println("Method took "+ estimatedTime + " for "+ array.size() +" strings");
+		
+		for(int i=0; i<sequenCounter.computeFDList(array).size();i++){
+		System.out.println(resultArray.get(i));
+		}
+		System.out.println("Method took "+ estimatedTime + " seconds for "+ array.size() +" strings\n");
 
 	}
 
