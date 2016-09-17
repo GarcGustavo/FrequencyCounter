@@ -18,7 +18,7 @@ public class OrderedTester extends SequentialTester {
 	}
 
 	//Methods to measure time in which SequentialFD executes for strings or integers
-	//Need to change to work with OrderedFD, this is just Sequential copy/pasted
+	//Need to change these to work with OrderedFD, this is just Sequential copy/pasted
 	public static void testerInt(ArrayList<Integer> array){
 
 		FrequencyCounter<Integer> sequenCounter = new SequentialFD<>();
