@@ -12,13 +12,20 @@ import java.io.IOException;
 
 public class SequentialTester {
 
-	//Used to set the amount of elements in generated lists
-	private static int generatorSize=1000;
+	//Used this integer to set the amount of elements in randomly generated lists
+	//private static int generatorSize=1000;
+	private static ArrayList<Integer> intList = new ArrayList<Integer>();
+	private static ArrayList<String> strList = new ArrayList<String>();
 
 	public static void main(String[] args) throws IOException{
+		readFiles("inputData/integerData.txt", "inputData/stringData.txt");
+		testerStr(strList);
+		testerInt(intList);
+	}
+	
+	//Method to read files and create the lists
+	public static void readFiles(String intFile, String strFile) throws NumberFormatException, IOException{
 
-		ArrayList<Integer> intList = new ArrayList<Integer>();
-		ArrayList<String> strList = new ArrayList<String>();
 		FileReader fileReaderInt = new FileReader("inputData/integerData.txt");
 		BufferedReader inInt = new BufferedReader(fileReaderInt);
 		FileReader fileReaderStr = new FileReader("inputData/stringData.txt");
@@ -42,9 +49,6 @@ public class SequentialTester {
 		inInt.close();
 		fileReaderStr.close();
 		inStr.close();
-
-		testerStr(strList);
-		testerInt(intList);
 	}
 
 	//Methods used to generate random tester files at integerData.txt and stringData.txt
