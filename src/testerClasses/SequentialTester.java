@@ -4,46 +4,98 @@ import approachClasses.SequentialFD;
 import approachClasses.FrequencyCounter;
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class SequentialTester {
-	
-	public static int capacity = 100;
-	ArrayList<Integer> intList = new ArrayList<>(capacity);
-	ArrayList<String> strList = new ArrayList<>(capacity);
-	
-	public void main(String[] args){
 
-		Random randGen = new Random();
-		for(int i=0; i<=capacity; i++){
-			intList.set(i, randGen.nextInt());
-			System.out.println("created new int"+intList.get(i));
+	//Used to set the amount of elements in generated lists
+	private static int generatorSize=1000;
+
+	public static void main(String[] args) throws IOException{
+
+		ArrayList<Integer> intList = new ArrayList<Integer>();
+		ArrayList<String> strList = new ArrayList<String>();
+		FileReader fileReaderInt = new FileReader("inputData/integerData.txt");
+		BufferedReader inInt = new BufferedReader(fileReaderInt);
+		FileReader fileReaderStr = new FileReader("inputData/stringData.txt");
+		BufferedReader inStr = new BufferedReader(fileReaderStr);
+		String strParseInt;
+		String strParseString;
+
+		//These 2 methods generate elements at the list to test
+		/*
+		writeFileInt(generatorSize);
+		writeFileStr(generatorSize);
+		*/
+
+		while((strParseInt = inInt.readLine()) != null){
+			intList.add(Integer.parseInt(strParseInt));
 		}
-		
-		seqTesterInt(intList);
+		while((strParseString = inStr.readLine()) != null){
+			strList.add(strParseString);
+		}
+		fileReaderInt.close();
+		inInt.close();
+		fileReaderStr.close();
+		inStr.close();
+
+		testerStr(strList);
+		testerInt(intList);
+	}
+
+	//Methods used to generate random tester files at integerData.txt and stringData.txt
+	public static void writeFileInt(int numElements) throws IOException{
+
+		Random randomGen = new Random();
+		FileWriter fw = new FileWriter("inputData/integerData.txt");
+		BufferedWriter bw = new BufferedWriter(fw);
+		for(int i=0; i<numElements; i++){
+			bw.write(randomGen.nextInt(100) +"\n");
+		}
+		bw.close();
+		fw.close();
 
 	}
+
+	public static void writeFileStr(int numElements) throws IOException{
+
+		Random randomGen = new Random();
+		FileWriter fw = new FileWriter("inputData/stringData.txt");
+		BufferedWriter bw = new BufferedWriter(fw);	
+		for(int i=0; i<numElements; i++){	
+			bw.write(String.valueOf(randomGen.nextInt(100))+"\n");
+		}
+		bw.close();
+		fw.close();
+	}
+
+	//Methods to measure time in which SequentialFD executes for strings or integers
 	
-	public static void seqTesterInt(ArrayList<Integer> array){
-		
+	public static void testerInt(ArrayList<Integer> array){
+
 		FrequencyCounter<Integer> sequenCounter = new SequentialFD<>();
 		long startTime = System.currentTimeMillis();
-		
+
 		sequenCounter.computeFDList(array);
-		
+
 		long estimatedTime = System.currentTimeMillis()-startTime;
-		System.out.println("Method took "+estimatedTime+ " for "+ capacity +" integers");
-		
+		System.out.println("Method took "+ estimatedTime + " seconds for "+ array.size() +" integers");
+
 	}
-	public static void seqTesterStr(ArrayList<String> array){
-		
+	public static void testerStr(ArrayList<String> array){
+
 		FrequencyCounter<String> sequenCounter = new SequentialFD<>();
 		long startTime = System.currentTimeMillis();
-		
+
 		sequenCounter.computeFDList(array);
-		
+
 		long estimatedTime = System.currentTimeMillis()-startTime;
-		System.out.println("Method took "+estimatedTime+ " for "+ capacity +" integers");
-		
+		System.out.println("Method took "+ estimatedTime + " for "+ array.size() +" strings");
+
 	}
 
 }
