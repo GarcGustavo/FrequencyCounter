@@ -12,17 +12,27 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class ExperimentalTrials {
-
-	//Used this integer to set the amount of elements in randomly generated lists
-	//private static int generatorSize=1000;
+	
+	private static int elements; //number of entries in list
+	private static int repetitions; //times to repeat approach run
+	private static double timeSum; //sum of total time taken to run approach for that many repetitions
 	private static ArrayList<Integer> intList = new ArrayList<Integer>();
 	private static ArrayList<String> strList = new ArrayList<String>();
+
 
 	public static void main(String[] args) throws IOException{
 		readFiles("inputData/integerData.txt", "inputData/stringData.txt");
 		testerInt(intList);
 		testerStr(strList);
 	}
+	
+	public static <E> ArrayList<E> createList(int numElems){
+		
+		Random randomGen = new Random();
+		return null;
+		
+	}
+	
 	
 	//Method to read files and create the lists
 	public static void readFiles(String intFile, String strFile) throws NumberFormatException, IOException{
@@ -34,12 +44,6 @@ public class ExperimentalTrials {
 		String strParseInt;
 		String strParseString;
 
-		//These 2 methods generate elements at the list to test
-		/*
-		writeFileInt(generatorSize);
-		writeFileStr(generatorSize);
-		*/
-
 		while((strParseInt = inInt.readLine()) != null){
 			intList.add(Integer.parseInt(strParseInt));
 		}
@@ -50,6 +54,9 @@ public class ExperimentalTrials {
 		inInt.close();
 		fileReaderStr.close();
 		inStr.close();
+		
+		writeFileInt(elements);
+		writeFileStr(elements);
 	}
 
 	//Methods used to generate random tester files at integerData.txt and stringData.txt
