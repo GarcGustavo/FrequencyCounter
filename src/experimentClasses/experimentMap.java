@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import approachClasses.FrequencyCounter;
-import approachClasses.SequentialFD;
+import approachClasses.MapFD;
 
 public class experimentMap {
 	
@@ -15,15 +15,15 @@ public class experimentMap {
 
 		int timeSum=0;
 		int averageTime=0;
-		FrequencyCounter<Integer> sequenCounter = new SequentialFD<>();
+		FrequencyCounter<Integer> mapCounter = new MapFD<>();
 		for(int i=0; i<runs; i++){
 		long startTime = System.currentTimeMillis();
-		sequenCounter.computeFDList(array);
+		mapCounter.computeFDList(array);
 		long estimatedTime = System.currentTimeMillis()-startTime;
 		timeSum += estimatedTime;
 		}
 		averageTime = timeSum/runs;
-		FileWriter fw = new FileWriter("experimentalResults/resultsSequential.txt");
+		FileWriter fw = new FileWriter("experimentalResults/resultsMap.txt");
 		BufferedWriter bw = new BufferedWriter(fw);
 		bw.write("Integers: "+ array.size() +" | "+averageTime+"\n");
 		bw.close();
@@ -33,15 +33,15 @@ public class experimentMap {
 
 		int timeSum=0;
 		int averageTime=0;
-		FrequencyCounter<String> sequenCounter = new SequentialFD<>();
+		FrequencyCounter<String> mapCounter = new MapFD<>();
 		for(int i=0; i<runs; i++){
 		long startTime = System.currentTimeMillis();
-		sequenCounter.computeFDList(array);
+		mapCounter.computeFDList(array);
 		long estimatedTime = System.currentTimeMillis()-startTime;
 		timeSum += estimatedTime;
 		}
 		averageTime = timeSum/runs;
-		FileWriter fw = new FileWriter("experimentalResults/resultsSequential.txt");
+		FileWriter fw = new FileWriter("experimentalResults/resultsMap.txt");
 		BufferedWriter bw = new BufferedWriter(fw);
 		bw.write("Strings: "+ array.size() +" | "+averageTime+"\n");
 		bw.close();

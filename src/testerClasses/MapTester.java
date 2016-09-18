@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Map.Entry;
 
 import approachClasses.FrequencyCounter;
-import approachClasses.SequentialFD;
+import approachClasses.MapFD;
 
 public class MapTester extends SequentialTester{
 	
@@ -19,17 +19,16 @@ public class MapTester extends SequentialTester{
 	}
 
 	//Methods to measure time in which SequentialFD executes for strings or integers
-	//Need to change to work with MapFD, this is just Sequential copy/pasted
 	public static void testerInt(ArrayList<Integer> array){
 
-		FrequencyCounter<Integer> sequenCounter = new SequentialFD<>();
+		FrequencyCounter<Integer> mapCounter = new MapFD<>();
 		ArrayList<Entry<Integer, Integer>> resultArray = null;
 		
 		long startTime = System.currentTimeMillis();
-		resultArray = sequenCounter.computeFDList(array);
+		resultArray = mapCounter.computeFDList(array);
 		long estimatedTime = System.currentTimeMillis()-startTime;
 		
-		for(int i=0; i<sequenCounter.computeFDList(array).size();i++){
+		for(int i=0; i<mapCounter.computeFDList(array).size();i++){
 		System.out.println(resultArray.get(i));
 		}
 		System.out.println("Method took "+ estimatedTime + " seconds for "+ array.size() +" integers\n");
@@ -37,14 +36,14 @@ public class MapTester extends SequentialTester{
 	}
 	public static void testerStr(ArrayList<String> array){
 
-		FrequencyCounter<String> sequenCounter = new SequentialFD<>();
+		FrequencyCounter<String> mapCounter = new MapFD<>();
 		ArrayList<Entry<String, Integer>> resultArray = null;
 		
 		long startTime = System.currentTimeMillis();
-		resultArray = sequenCounter.computeFDList(array);
+		resultArray = mapCounter.computeFDList(array);
 		long estimatedTime = System.currentTimeMillis()-startTime;
 		
-		for(int i=0; i<sequenCounter.computeFDList(array).size();i++){
+		for(int i=0; i<mapCounter.computeFDList(array).size();i++){
 		System.out.println(resultArray.get(i));
 		}
 		System.out.println("Method took "+ estimatedTime + " seconds for "+ array.size() +" strings\n");
