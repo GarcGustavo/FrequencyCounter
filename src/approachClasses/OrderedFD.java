@@ -28,9 +28,9 @@ public class OrderedFD<E extends Comparable<E>> extends FrequencyCounter<E> {
 			}
 		});	
 		
-		for (int i=0; i<listSort.size(); i++){
-			if(listSort.get(i)!=listSort.get(i+1)){
-				Map.Entry<E, Integer> entry = new AbstractMap.SimpleEntry<E, Integer>(listSort.get(i), i+1-lastElemIndex); 
+		for (int i=1; i<listSort.size(); i++){
+			if(listSort.get(i)!=listSort.get(i-1)){
+				Map.Entry<E, Integer> entry = new AbstractMap.SimpleEntry<E, Integer>(listSort.get(i), i-lastElemIndex); 
 				results.add(entry);
 				lastElemIndex=i;
 			}
