@@ -1,6 +1,6 @@
 package testerClasses;
 
-import approachClasses.SequentialFD;
+import approachClasses.OrderedFD;
 import approachClasses.FrequencyCounter;
 import java.util.ArrayList;
 import java.util.Map.Entry;
@@ -21,14 +21,14 @@ public class OrderedTester extends SequentialTester {
 	//Need to change these to work with OrderedFD, this is just Sequential copy/pasted
 	public static void testerInt(ArrayList<Integer> array){
 
-		FrequencyCounter<Integer> sequenCounter = new SequentialFD<>();
+		FrequencyCounter<Integer> orderedCounter = new OrderedFD<>();
 		ArrayList<Entry<Integer, Integer>> resultArray = null;
 		
 		long startTime = System.currentTimeMillis();
-		resultArray = sequenCounter.computeFDList(array);
+		resultArray = orderedCounter.computeFDList(array);
 		long estimatedTime = System.currentTimeMillis()-startTime;
 		
-		for(int i=0; i<sequenCounter.computeFDList(array).size();i++){
+		for(int i=0; i<orderedCounter.computeFDList(array).size();i++){
 		System.out.println(resultArray.get(i));
 		}
 		System.out.println("Method took "+ estimatedTime + " seconds for "+ array.size() +" integers\n");
@@ -36,14 +36,14 @@ public class OrderedTester extends SequentialTester {
 	}
 	public static void testerStr(ArrayList<String> array){
 
-		FrequencyCounter<String> sequenCounter = new SequentialFD<>();
+		FrequencyCounter<String> orderedCounter = new OrderedFD<>();
 		ArrayList<Entry<String, Integer>> resultArray = null;
 		
 		long startTime = System.currentTimeMillis();
-		resultArray = sequenCounter.computeFDList(array);
+		resultArray = orderedCounter.computeFDList(array);
 		long estimatedTime = System.currentTimeMillis()-startTime;
 		
-		for(int i=0; i<sequenCounter.computeFDList(array).size();i++){
+		for(int i=0; i<orderedCounter.computeFDList(array).size();i++){
 		System.out.println(resultArray.get(i));
 		}
 		System.out.println("Method took "+ estimatedTime + " seconds for "+ array.size() +" strings\n");
