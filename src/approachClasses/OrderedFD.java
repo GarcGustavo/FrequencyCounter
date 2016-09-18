@@ -14,7 +14,7 @@ public class OrderedFD<E extends Comparable<E>> extends FrequencyCounter<E> {
 	@Override
 	public ArrayList<Map.Entry<E, Integer>> computeFDList(ArrayList<E> dataSet) {
 
-		//List recording occurrences
+		int lastElemIndex=0;
 		ArrayList<Map.Entry<E, Integer>> results = new ArrayList<Map.Entry<E, Integer>>();
 		ArrayList<E> listSort = new ArrayList<>();
 		listSort.addAll(dataSet);
@@ -30,8 +30,9 @@ public class OrderedFD<E extends Comparable<E>> extends FrequencyCounter<E> {
 		
 		for (int i=0; i<listSort.size(); i++){
 			if(listSort.get(i)!=listSort.get(i+1)){
-				Map.Entry<E, Integer> entry = new AbstractMap.SimpleEntry<E, Integer>(listSort.get(i), i+1); 
+				Map.Entry<E, Integer> entry = new AbstractMap.SimpleEntry<E, Integer>(listSort.get(i), i+1-lastElemIndex); 
 				results.add(entry);
+				lastElemIndex=i;
 			}
 		}
 		return results;

@@ -4,7 +4,6 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Map;
-import java.util.Map.Entry;
 
 public class OrderedFD_Binary<E extends Comparable<E>> extends FrequencyCounter<E> {
 
