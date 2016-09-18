@@ -1,121 +1,48 @@
 package experimentClasses;
 
-import approachClasses.SequentialFD;
-import approachClasses.FrequencyCounter;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 import java.util.Random;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class ExperimentalTrials {
-	
-	private static int elements; //number of entries in list
-	private static int repetitions; //times to repeat approach run
-	private static double timeSum; //sum of total time taken to run approach for that many repetitions
+
+	private static int elements=50; //number of entries in list
+	private static int repetitions=200; //times to repeat each approach
 	private static ArrayList<Integer> intList = new ArrayList<Integer>();
 	private static ArrayList<String> strList = new ArrayList<String>();
 
 
 	public static void main(String[] args) throws IOException{
-		readFiles("inputData/integerData.txt", "inputData/stringData.txt");
-		testerInt(intList);
-		testerStr(strList);
+		
+		createList(elements);
+		clearFile("resultsSequential.txt");
+		experimentSequen.testerInt(intList, repetitions);
+		experimentSequen.testerStr(strList, repetitions);
+		clearFile("resultsOrdered.txt");
+		experimentOrdered.testerInt(intList, repetitions);
+		experimentOrdered.testerStr(strList, repetitions);
+		clearFile("resultsMap.txt");
+		experimentMap.testerInt(intList, repetitions);
+		experimentMap.testerStr(strList, repetitions);
+		
+		System.out.println("Experiment complete, data saved to experimentalResults directory text files.");
+	}
+
+	//Method to clear files of previous experiment results
+	public static void clearFile(String fileName) throws FileNotFoundException{
+		PrintWriter pw = new PrintWriter(fileName);
+		pw.close();
 	}
 	
-	public static <E> ArrayList<E> createList(int numElems){
-		
+	public static void createList(int numElems){
 		Random randomGen = new Random();
-		return null;
-		
-	}
-	
-	
-	//Method to read files and create the lists
-	public static void readFiles(String intFile, String strFile) throws NumberFormatException, IOException{
-
-		FileReader fileReaderInt = new FileReader("inputData/integerData.txt");
-		BufferedReader inInt = new BufferedReader(fileReaderInt);
-		FileReader fileReaderStr = new FileReader("inputData/stringData.txt");
-		BufferedReader inStr = new BufferedReader(fileReaderStr);
-		String strParseInt;
-		String strParseString;
-
-		while((strParseInt = inInt.readLine()) != null){
-			intList.add(Integer.parseInt(strParseInt));
+		for(int i=0; i<numElems; i++){
+			intList.add(randomGen.nextInt(numElems/2));
 		}
-		while((strParseString = inStr.readLine()) != null){
-			strList.add(strParseString);
+		for(int i=0; i<numElems; i++){	
+			strList.add(String.valueOf(randomGen.nextInt(numElems/2))+"\n");
 		}
-		fileReaderInt.close();
-		inInt.close();
-		fileReaderStr.close();
-		inStr.close();
-		
-		writeFileInt(elements);
-		writeFileStr(elements);
 	}
-
-	//Methods used to generate random tester files at integerData.txt and stringData.txt
-	public static void writeFileInt(int numElements) throws IOException{
-
-		Random randomGen = new Random();
-		FileWriter fw = new FileWriter("inputData/integerData.txt");
-		BufferedWriter bw = new BufferedWriter(fw);
-		for(int i=0; i<numElements; i++){
-			bw.write(randomGen.nextInt(100) +"\n");
-		}
-		bw.close();
-		fw.close();
-
-	}
-
-	public static void writeFileStr(int numElements) throws IOException{
-
-		Random randomGen = new Random();
-		FileWriter fw = new FileWriter("inputData/stringData.txt");
-		BufferedWriter bw = new BufferedWriter(fw);	
-		for(int i=0; i<numElements; i++){	
-			bw.write(String.valueOf(randomGen.nextInt(100))+"\n");
-		}
-		bw.close();
-		fw.close();
-	}
-
-	//Methods to measure time in which SequentialFD executes for strings or integers
-	
-	public static void testerInt(ArrayList<Integer> array){
-
-		FrequencyCounter<Integer> sequenCounter = new SequentialFD<>();
-		ArrayList<Entry<Integer, Integer>> resultArray = null;
-		
-		long startTime = System.currentTimeMillis();
-		resultArray = sequenCounter.computeFDList(array);
-		long estimatedTime = System.currentTimeMillis()-startTime;
-		
-		for(int i=0; i<sequenCounter.computeFDList(array).size();i++){
-		System.out.println(resultArray.get(i));
-		}
-		System.out.println("Method took "+ estimatedTime + " seconds for "+ array.size() +" integers\n");
-
-	}
-	public static void testerStr(ArrayList<String> array){
-
-		FrequencyCounter<String> sequenCounter = new SequentialFD<>();
-		ArrayList<Entry<String, Integer>> resultArray = null;
-		
-		long startTime = System.currentTimeMillis();
-		resultArray = sequenCounter.computeFDList(array);
-		long estimatedTime = System.currentTimeMillis()-startTime;
-		
-		for(int i=0; i<sequenCounter.computeFDList(array).size();i++){
-		System.out.println(resultArray.get(i));
-		}
-		System.out.println("Method took "+ estimatedTime + " seconds for "+ array.size() +" strings\n");
-
-	}
-
 }

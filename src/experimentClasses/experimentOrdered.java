@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import approachClasses.FrequencyCounter;
 import approachClasses.SequentialFD;
 
-public class experimentSequen {
+public class experimentOrdered {
 	
-	
+	//modify to work with ordered
 	public static void testerInt(ArrayList<Integer> array, int runs) throws IOException{
 
 		int timeSum=0;

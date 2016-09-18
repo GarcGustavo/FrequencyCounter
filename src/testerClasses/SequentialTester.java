@@ -92,7 +92,7 @@ public class SequentialTester {
 		for(int i=0; i<sequenCounter.computeFDList(array).size();i++){
 		System.out.println(resultArray.get(i));
 		}
-		System.out.println("Method took "+ estimatedTime + " seconds for "+ array.size() +" integers\n");
+		System.out.println("Method took "+ estimatedTime + " milliseconds for "+ array.size() +" integers\n");
 
 	}
 	public static void testerStr(ArrayList<String> array){
@@ -107,7 +107,7 @@ public class SequentialTester {
 		for(int i=0; i<sequenCounter.computeFDList(array).size();i++){
 		System.out.println(resultArray.get(i));
 		}
-		System.out.println("Method took "+ estimatedTime + " seconds for "+ array.size() +" strings\n");
+		System.out.println("Method took "+ estimatedTime + " milliseconds for "+ array.size() +" strings\n");
 
 	}
 
