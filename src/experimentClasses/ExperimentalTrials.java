@@ -16,7 +16,7 @@ public class ExperimentalTrials {
 
 	
 	private static int entries=50; //number of starting elements in list
-	private static int repetitions=20; //times to repeat each approach in one list
+	private static int repetitions=200; //times to repeat each approach in one list
 	private static int iterations=30; //amount of lists to go through
 	private static int elementIncrement=50; //amount of elements to add for next list experiment
 	private static ArrayList<Integer> intList = new ArrayList<Integer>();
