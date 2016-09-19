@@ -7,6 +7,11 @@ import java.util.Map.Entry;
 import approachClasses.FrequencyCounter;
 import approachClasses.MapFD;
 
+/**
+ * Tests map method using files
+ * @author Gustavo Reyes
+ *
+ */
 public class MapTester extends SequentialTester{
 	
 	private static ArrayList<Integer> intList = new ArrayList<Integer>();

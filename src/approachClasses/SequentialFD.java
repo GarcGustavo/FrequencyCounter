@@ -6,6 +6,9 @@ import java.util.Map;
 
 public class SequentialFD<E extends Comparable<E>> extends FrequencyCounter<E> {
 
+	/**
+	 * Sequential method approach
+	 */
 	public SequentialFD() {
 		super("Sequential");
 	}

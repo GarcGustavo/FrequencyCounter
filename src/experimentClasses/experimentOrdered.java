@@ -10,7 +10,13 @@ import approachClasses.OrderedFD;
 
 public class experimentOrdered {
 	
-	//modify to work with ordered
+	/**
+	 * Tester methods that implement ordered method
+	 * @author Gustavo Reyes
+	 * @param array
+	 * @param runs
+	 * @throws IOException
+	 */
 	public static void testerInt(ArrayList<Integer> array, int runs) throws IOException{
 
 		long timeSum=0;

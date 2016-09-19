@@ -11,6 +11,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Tests sequence method using files
+ * @author Gustavo Reyes
+ *
+ */
 public class SequentialTester {
 
 	//Used this integer to set the amount of elements in randomly generated lists

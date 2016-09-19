@@ -3,6 +3,12 @@ package approachClasses;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * Interface that's extended by approach classes
+ * @author Gustavo Reyes
+ *
+ * @param <E>
+ */
 public abstract class FrequencyCounter<E extends Comparable<E>> { 
     private String name;    // the name given to this strategy
     

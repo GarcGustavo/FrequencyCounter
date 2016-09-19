@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Map;
 
+/**
+ * Ordered method implementation
+ * @author Gustavo Reyes
+ *
+ * @param <E>
+ */
 public class OrderedFD<E extends Comparable<E>> extends FrequencyCounter<E> {
 
 	public OrderedFD() {

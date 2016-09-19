@@ -9,8 +9,13 @@ import approachClasses.FrequencyCounter;
 import approachClasses.MapFD;
 
 public class experimentMap {
-	
-	//Modify to work with map
+	/**
+	 * Tester methods that implement sequence method
+	 * @author Gustavo Reyes
+	 * @param array
+	 * @param runs
+	 * @throws IOException
+	 */
 	public static void testerInt(ArrayList<Integer> array, int runs) throws IOException{
 
 		long timeSum=0;

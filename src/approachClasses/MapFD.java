@@ -5,6 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+/**
+ * Map method search approach
+ * @author Gustavo Reyes
+ *
+ * @param <E>
+ */
 public class MapFD<E extends Comparable<E>> extends FrequencyCounter<E> {
 
 	public MapFD() {

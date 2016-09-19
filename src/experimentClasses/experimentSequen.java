@@ -10,6 +10,13 @@ import approachClasses.SequentialFD;
 
 public class experimentSequen {
 	
+	/**
+	 * Tester methods that implement sequence method
+	 * @author Gustavo Reyes
+	 * @param array
+	 * @param runs
+	 * @throws IOException
+	 */
 	
 	public static void testerInt(ArrayList<Integer> array, int runs) throws IOException{
 

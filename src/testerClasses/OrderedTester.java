@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.Map.Entry;
 import java.io.IOException;
 
+/**
+ * Tests ordered method using files
+ * @author Gustavo Reyes
+ *
+ */
 public class OrderedTester extends SequentialTester {
 
 	private static ArrayList<Integer> intList = new ArrayList<Integer>();
