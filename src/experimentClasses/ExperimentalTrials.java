@@ -2,7 +2,9 @@ package experimentClasses;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -21,6 +23,11 @@ public class ExperimentalTrials {
 		clearFile("experimentalResults/resultsSequential.txt");
 		clearFile("experimentalResults/resultsOrdered.txt");
 		clearFile("experimentalResults/resultsMap.txt");
+		FileWriter fw = new FileWriter("experimentalResults/resultsMap.txt");
+		BufferedWriter bw = new BufferedWriter(fw);
+		bw.write("<Number of Elements> <Average Time in Nano-Seconds>\n\n");
+		bw.close();
+		fw.close();
 		int index=0;
 		intList.clear();
 		strList.clear();
